@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital's End</title>
+</head>
+<body>
+    <h1>List of Appointments</h1>
+    <form method="get" action="">
+        <input type="text" name="q" placeholder="Search by name or mobile number">
+        <button type="submit">Search</button>
+    </form>
+    <form method="get" action="">
+        <label for="doctor_group">Group by Doctor:</label>
+        <select name="doctor_group">
+            <option value="">All Doctors</option>
+            {% for doctor in doctors %}
+            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Group</button>
+    </form>
+    <table>
+        <tr>
+            <th>Token Number</th>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Department</th>
+            <th>Doctor</th>
+        </tr>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.token_number }}</td>
+            <td>{{ appointment.name }}</td>
+            <td>{{ appointment.mobile_number }}</td>
+            <td>{{ appointment.department.name }}</td>
+            <td>{{ appointment.doctor.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
